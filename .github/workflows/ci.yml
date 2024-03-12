@@ -1,0 +1,29 @@
+name: CI
+
+concurrency:
+  group: ${{ github.repository }}-${{ github.workflow }}-${{ inputs.branch || github.head_ref || github.ref }}
+  cancel-in-progress: true
+
+on:
+  push:
+    branches: [ main ]
+    tags-ignore:
+      - '**'
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  import-project-action-test:
+    name: Import Action Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: 
+          repository: Arm-Examples/Hello_LPCXpresso55S69
+      - uses: Arm-Examples/publish-cmsis-example@create-initial-action
+        name: Import Project Action
+        with:
+          branch: ${{ github.head_ref || github.ref }}
+          project-file: ./hello.csolution.yml
+          dry-run: true
+          API_TOKEN: ${{ secrets.API_TOKEN }}

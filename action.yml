@@ -1,0 +1,39 @@
+name: publish-cmsis-example
+description: GitHub action to publish CMSIS example to keil.arm.com
+inputs:
+  branch:
+    description: "Branch to run on"
+    required: false
+    default: ${{ github.head_ref }}
+  project-file:
+    description: "Project to import"
+    required: true
+  dry-run:
+    description: "Whether to just complete a dry-run. This can be useful to verify a project is convertable and uploadable without actually making it available on keil.arm.com"
+    required: false
+    default: "false"
+  API_TOKEN:
+    description: "Token for the publishing API"
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - name: Install solar-pack-project-importer
+      shell: bash
+      run: |
+        echo "deb [trusted=yes] https://https://artifactory.tools.arm.com/artifactory/tools-deb bionic main" | sudo tee -a /etc/apt/sources.list.d/artifactory.list          
+        sudo apt-get update
+        sudo apt install -y solar-pack-project-importer
+        sudo rm /etc/apt/sources.list.d/artifactory.list  
+        sudo apt-get clean
+    - name: Upload project
+      if: ${{ inputs.dry-run == false }}
+      run: |
+        solar-pack-project-importer import repo -t ${{ inputs.API_TOKEN }} -w https://solar-search.api.keil.arm.com/ -u https://software.api.keil.arm.com/ -p ${{ github.workspace }}/${{ inputs.project-file }} --git --git-root ${{ github.workspace }} -s Token --verbose --intermediate-directory /tmp/intdir --clean-intermediate-directory false
+      shell: bash
+    - name: Test project is uploadable (dry-run)
+      if: ${{ inputs.dry-run != false }}
+      run: |
+        solar-pack-project-importer import repo -t ${{ inputs.API_TOKEN }} -w https://solar-search.api.keil.arm.com/ -u https://software.api.keil.arm.com/ -p ${{ github.workspace }}/${{ inputs.project-file }} --git --git-root ${{ github.workspace }} -s Token --verbose --intermediate-directory /tmp/intdir --clean-intermediate-directory false --dry-run
+      shell: bash
+
