@@ -21,7 +21,7 @@ runs:
     - name: Install solar-pack-project-importer
       shell: bash
       run: |
-        echo "deb [trusted=yes] https://https://artifactory.tools.arm.com/artifactory/tools-deb bionic main" | sudo tee -a /etc/apt/sources.list.d/artifactory.list          
+        echo "deb [trusted=yes] https://artifactory.tools.arm.com/artifactory/tools-deb bionic main" | sudo tee -a /etc/apt/sources.list.d/artifactory.list          
         sudo apt-get update
         sudo apt install -y solar-pack-project-importer
         sudo rm /etc/apt/sources.list.d/artifactory.list  
