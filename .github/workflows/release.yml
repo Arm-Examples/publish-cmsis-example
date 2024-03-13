@@ -1,3 +1,7 @@
+#
+# Copyright (C) 2020-2024 Arm Limited or its affiliates and Contributors. All rights reserved.
+# SPDX-License-Identifier: Apache-2.0
+#
 name: GitHub Release
 
 env:
@@ -48,8 +52,4 @@ jobs:
         run: cd-tag-and-release -b ${CI_ACTION_REF_NAME} -t ${{ github.event.inputs.release_type }} -vv
         env:
           GIT_TOKEN: ${{ secrets.GIT_SECRET }}
-      - id: artifactory-proxy
-        if: inputs.release_to_artifactory
-        uses: Arm-Debug/artifactory-proxy-action@v2.1
-        with:
-          github-token: ${{ secrets.GIT_SECRET }}
+

@@ -6,12 +6,12 @@ This repository contains the GitHub action used to publish CMSIS example to [kei
 
 In the steps in your workflow file:
 ```yaml
-- uses: Arm-Debug/solar-pack-project-importer@latest
+- uses: Arm-Examples/publish-cmsis-example@latest
   with:
-    branch: # Branch to run on
+    branch:       # Branch to run on
     project-file: # Project to import (required)
-    dry-run: # Whether to just complete a dry-run. This can be useful to verify a project is convertable and uploadable without actually making it available on keil.arm.com
-    SOFTWARE_API_TOKEN: # API token with push access to the software-api
+    dry-run:      # Whether to just complete a dry-run. This can be useful to verify a project is publishable without actually making it available on keil.arm.com
+    API_TOKEN:    # API token for publishing projects
 ```
 
 All inputs marked with `(required)` are required.
