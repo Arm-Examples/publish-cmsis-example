@@ -24,10 +24,10 @@ jobs:
       - uses: actions/checkout@v4
         with: 
           repository: Arm-Examples/Hello_LPCXpresso55S69
-      - uses: ./action.yml
+      - uses: Arm-Examples/publish-cmsis-example@${{ github.head_ref || github.ref }}
         name: Import Project Action
         with:
-          branch: ${{ github.head_ref || github.ref }}
+          branch: main
           project-file: ./hello.csolution.yml
           dry-run: true
           API_TOKEN: ${{ secrets.API_TOKEN }}
