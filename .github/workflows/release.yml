@@ -8,16 +8,13 @@ env:
   python_version: "3.9"
 
 on:
-  workflow_call:
+  workflow_dispatch:
     inputs:
       release_type:
         description:
           "Enter type of release to perform (i.e. development, beta, release):"
         required: true
         type: string
-    secrets:
-      GIT_SECRET:
-        required: true
 
 jobs:
   check-for-changes:

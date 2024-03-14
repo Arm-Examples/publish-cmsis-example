@@ -24,7 +24,7 @@ jobs:
       - uses: actions/checkout@v4
         with: 
           repository: Arm-Examples/Hello_LPCXpresso55S69
-      - uses: Arm-Examples/publish-cmsis-example@main
+      - uses: ./action.yml
         name: Import Project Action
         with:
           branch: ${{ github.head_ref || github.ref }}
