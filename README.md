@@ -15,3 +15,7 @@ In the steps in your workflow file:
 ```
 
 All inputs marked with `(required)` are required.
+
+---
+
+**_Note: This action will update the cache for [keil.arm.com](https://keil.arm.com), the changes are applied via a cronjob so a project published using this action will not appear on the website immediately._**
