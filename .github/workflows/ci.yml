@@ -1,0 +1,33 @@
+#
+# Copyright (C) 2020-2024 Arm Limited or its affiliates and Contributors. All rights reserved.
+# SPDX-License-Identifier: Apache-2.0
+#
+name: CI
+
+concurrency:
+  group: ${{ github.repository }}-${{ github.workflow }}-${{ inputs.branch || github.head_ref || github.ref }}
+  cancel-in-progress: true
+
+on:
+  push:
+    branches: [ main ]
+    tags-ignore:
+      - '**'
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  publish-project-action-test:
+    name: Publish Action Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: 
+          repository: Arm-Examples/Hello_LPCXpresso55S69
+      - uses: Arm-Examples/publish-cmsis-example@create-initial-example
+        name: Import Project Action
+        with:
+          branch: ${{ github.head_ref || github.ref }}
+          project-file: ./hello.csolution.yml
+          dry-run: true
+          API_TOKEN: ${{ secrets.API_TOKEN }}
