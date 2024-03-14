@@ -25,7 +25,7 @@ runs:
     - name: Install publishing tool
       shell: bash
       run: |
-        echo "deb [trusted=yes] https://artifactory.tools.arm.com/tools-deb bionic main" | sudo tee -a /etc/apt/sources.list.d/artifactory.list          
+        echo "deb [trusted=yes] https://artifacts.tools.arm.com/tools-deb bionic main" | sudo tee -a /etc/apt/sources.list.d/artifactory.list          
         sudo apt-get update
         sudo apt install -y cmsis-example-importer
         sudo rm /etc/apt/sources.list.d/artifactory.list  
