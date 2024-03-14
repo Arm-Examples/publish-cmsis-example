@@ -21,13 +21,15 @@ jobs:
     name: Publish Action Test
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4 # this repository
+      - uses: actions/checkout@v4 # test repository
         with: 
           repository: Arm-Examples/Hello_LPCXpresso55S69
-      - uses: Arm-Examples/publish-cmsis-example@${{ github.head_ref || github.ref }}
+          path: test
+      - uses: ./action.yml
         name: Import Project Action
         with:
           branch: main
-          project-file: ./hello.csolution.yml
+          project-file: ./test/hello.csolution.yml
           dry-run: true
           API_TOKEN: ${{ secrets.API_TOKEN }}
