@@ -18,4 +18,4 @@ All inputs marked with `(required)` are required.
 
 ---
 
-**_Note: This action will update the cache for [keil.arm.com](https://keil.arm.com), the changes are applied via a cronjob so a project published using this action will not appear on the website immediately._**
+**_Note: This action will update the datastore for [keil.arm.com](https://keil.arm.com), and the changes will later be picked up and displayed on the website. Hence, a project published using this action will not appear on the website immediately but within a couple of hours._**
