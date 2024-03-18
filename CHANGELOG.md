@@ -2,6 +2,19 @@
 Copyright (C) 2020-2024 Arm Limited or its affiliates and Contributors. All rights reserved.
 SPDX-License-Identifier: Apache-2.0
 -->
+"" "0.1.2" (2024-03-18)
+=======================
+
+Bugfixes
+--------
+
+- 🐛 Add boolean check to dry-run (in addition to the string check) in case of future changes to GitHub actions (#20240318090724)
+
+
+<!--
+Copyright (C) 2020-2024 Arm Limited or its affiliates and Contributors. All rights reserved.
+SPDX-License-Identifier: Apache-2.0
+-->
 "" "0.1.1" (2024-03-15)
 =======================
 
