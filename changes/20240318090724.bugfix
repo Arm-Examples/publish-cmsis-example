@@ -1,0 +1,1 @@
+🐛 Add boolean check to dry-run (in addition to the string check) in case of future changes to GitHub actions

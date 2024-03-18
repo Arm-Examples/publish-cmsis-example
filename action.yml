@@ -31,12 +31,12 @@ runs:
         sudo rm /etc/apt/sources.list.d/artifactory.list  
         sudo apt-get clean
     - name: Publish project
-      if: ${{ inputs.dry-run == 'false' }}
+      if: ${{ inputs.dry-run == 'false' || inputs.dry-run == false }}
       run: |
         cmsis-example-importer import repo -t ${{ inputs.API_TOKEN }} -w https://solar-search.api.keil.arm.com/ -u https://software.api.keil.arm.com/ -p ${{ github.workspace }}/${{ inputs.project-file }} --git --git-root ${{ github.workspace }} -s Token --verbose --intermediate-directory /tmp/intdir --clean-intermediate-directory false
       shell: bash
     - name: Test project is publishable (dry-run)
-      if: ${{ inputs.dry-run != 'false' }}
+      if: ${{ inputs.dry-run != 'false' && inputs.dry-run != false }}
       run: |
         cmsis-example-importer import repo -t ${{ inputs.API_TOKEN }} -w https://solar-search.api.keil.arm.com/ -u https://software.api.keil.arm.com/ -p ${{ github.workspace }}/${{ inputs.project-file }} --git --git-root ${{ github.workspace }} -s Token --verbose --intermediate-directory /tmp/intdir --clean-intermediate-directory false --dry-run
       shell: bash
