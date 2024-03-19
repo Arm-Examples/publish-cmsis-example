@@ -47,7 +47,7 @@ jobs:
 
 ### Example: Multiple Workflows
 
-Alternatively to the previous approach, you can have two CI workflows. One will run against pull requests and another will run against pushes to the `main` branch:
+As an alternative to the previous approach, you can have two CI workflows. One will run against pull requests and another will run against pushes to the `main` branch:
 
 Complete a dry-run to validate that the project is publishable on pull requests:
 
