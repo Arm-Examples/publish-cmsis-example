@@ -6,18 +6,18 @@ name: publish-cmsis-example
 description: GitHub action to publish CMSIS example to keil.arm.com
 inputs:
   branch:
-    description: "Branch to run on"
+    description: "Branch to get the project from if not `main`"
     required: false
     default: ${{ github.head_ref }}
   project-file:
-    description: "Project to import"
+    description: "Path to the project to publish (file with `.csolution.yml` extension) (required) "
     required: true
   dry-run:
-    description: "Whether to just complete a dry-run. This can be useful to verify a project is publishable without actually making it available on keil.arm.com"
+    description: "Whether to just complete a dry-run (`true` or `false`). This can be useful to verify a project is publishable without actually making it available on `keil.arm.com`"
     required: false
     default: "false"
   API_TOKEN:
-    description: "Token for the publishing API"
+    description: "API token for publishing projects (required)"
     required: true
 runs:
   using: "composite"
