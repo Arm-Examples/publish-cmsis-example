@@ -99,10 +99,10 @@ jobs:
           API_TOKEN: ${{ secrets.KEIL_API_TOKEN }}
 ```
 
-## Tokens
+## API Token Access
 
-@willlordarm You wanted a comment here about the tokens.
+Use of this GitHub Action requires an API token. To request a token for use in your own organization please contact any of the repository contributors.
 
 ---
 
-**_Note: This action will update the datastore for [keil.arm.com](https://keil.arm.com), and the changes will later be picked up and displayed on the website. Hence, a project published using this action will not appear on the website immediately but within a couple of hours._**
+**_Note: This action publishes example projects to [keil.arm.com](https://keil.arm.com). Please note that this process can take up to two hours to complete so projects may not be immediately visible._**
