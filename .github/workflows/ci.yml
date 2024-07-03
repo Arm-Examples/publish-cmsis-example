@@ -27,7 +27,7 @@ jobs:
           repository: Arm-Examples/Hello_LPCXpresso55S69
           path: test
       - uses: ./
-        name: Import Project Action
+        name: Publish Project Action
         with:
           branch: main
           project-file: ./test/hello.csolution.yml
