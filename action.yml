@@ -16,8 +16,11 @@ inputs:
     description: "Whether to just complete a dry-run (`true` or `false`). This can be useful to verify a project is publishable without actually making it available on `keil.arm.com`"
     required: false
     default: "false"
-  API_TOKEN:
+  PUBLISH_API_KEY:
     description: "API token for publishing projects (required)"
+    required: true
+  CMSIS_API_KEY:
+    description: "API token for using CMSIS services (required)"
     required: true
 runs:
   using: "composite"
@@ -27,17 +30,17 @@ runs:
       run: |
         echo "deb [trusted=yes] https://artifacts.tools.arm.com/tools-deb bionic main" | sudo tee -a /etc/apt/sources.list.d/artifactory.list          
         sudo apt-get update
-        sudo apt install -y cmsis-example-importer
+        sudo apt install -y cmsis-git-project-publisher
         sudo rm /etc/apt/sources.list.d/artifactory.list  
         sudo apt-get clean
     - name: Publish project
       if: ${{ inputs.dry-run == 'false' || inputs.dry-run == false }}
       run: |
-        cmsis-example-importer import repo -t ${{ inputs.API_TOKEN }} -w https://solar-search.api.keil.arm.com/ -u https://software.api.keil.arm.com/ -p ${{ github.workspace }}/${{ inputs.project-file }} --git --git-root ${{ github.workspace }} -s Token --verbose --intermediate-directory /tmp/intdir --clean-intermediate-directory false
+        cmsis-git-project-publisher project --keil-project-registration-service-token ${{ inputs.PUBLISH_API_KEY }} --cmsis-search-url https://solar-search.api.keil.arm.com/ --keil-project-registration-service-url https://software.api.keil.arm.com/ --project-path ${{ github.workspace }}/${{ inputs.project-file }} --git-root ${{ github.workspace }} --keil-project-registration-service-auth-scheme Token --verbose --intermediate-directory /tmp/intdir --dry-run --ecosystem-services-url https://all.api.keil.arm.com --ecosystem-services-api-key ${{ inputs.CMSIS_API_KEY }}
       shell: bash
     - name: Test project is publishable (dry-run)
       if: ${{ inputs.dry-run != 'false' && inputs.dry-run != false }}
       run: |
-        cmsis-example-importer import repo -t ${{ inputs.API_TOKEN }} -w https://solar-search.api.keil.arm.com/ -u https://software.api.keil.arm.com/ -p ${{ github.workspace }}/${{ inputs.project-file }} --git --git-root ${{ github.workspace }} -s Token --verbose --intermediate-directory /tmp/intdir --clean-intermediate-directory false --dry-run
+        cmsis-git-project-publisher project --keil-project-registration-service-token ${{ inputs.PUBLISH_API_KEY }} --cmsis-search-url https://solar-search.api.keil.arm.com/ --keil-project-registration-service-url https://software.api.keil.arm.com/ --project-path ${{ github.workspace }}/${{ inputs.project-file }} --git-root ${{ github.workspace }} --keil-project-registration-service-auth-scheme Token --verbose --intermediate-directory /tmp/intdir --dry-run --ecosystem-services-url https://all.api.keil.arm.com --ecosystem-services-api-key ${{ inputs.CMSIS_API_KEY }} --dry-run
       shell: bash
 

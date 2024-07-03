@@ -42,7 +42,8 @@ jobs:
           branch: ${{ github.ref }}
           project-file: ./hello.csolution.yml
           dry-run: ${{ github.ref != 'refs/heads/main' }} # This will evaluate to true if the branch is not main
-          API_TOKEN: ${{ secrets.KEIL_API_TOKEN }}
+          PUBLISH_API_KEY: ${{ secrets.KEIL_API_TOKEN }}
+          CMSIS_API_KEY: ${{ secrets.CMSIS_API_KEY }}
 ```
 
 ### Example: Multiple Workflows
@@ -71,7 +72,8 @@ jobs:
           branch: ${{ github.ref }}
           project-file: ./hello.csolution.yml
           dry-run: true
-          API_TOKEN: ${{ secrets.KEIL_API_TOKEN }}
+          PUBLISH_API_KEY: ${{ secrets.KEIL_API_TOKEN }}
+          CMSIS_API_KEY: ${{ secrets.CMSIS_API_KEY }}
 ```
 
 On the `main` branch, publish the action as `dry-run` is set to `false`:
@@ -96,7 +98,8 @@ jobs:
           branch: main
           project-file: ./hello.csolution.yml
           dry-run: false
-          API_TOKEN: ${{ secrets.KEIL_API_TOKEN }}
+          PUBLISH_API_KEY: ${{ secrets.KEIL_API_TOKEN }}
+          CMSIS_API_KEY: ${{ secrets.CMSIS_API_KEY }}
 ```
 
 ## API Token Access

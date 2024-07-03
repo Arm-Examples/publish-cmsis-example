@@ -27,9 +27,10 @@ jobs:
           repository: Arm-Examples/Hello_LPCXpresso55S69
           path: test
       - uses: ./
-        name: Import Project Action
+        name: Publish Project Action
         with:
           branch: main
           project-file: ./test/hello.csolution.yml
           dry-run: true
-          API_TOKEN: ${{ secrets.API_TOKEN }}
+          PUBLISH_API_KEY: ${{ secrets.KEIL_API_TOKEN }}
+          CMSIS_API_KEY: ${{ secrets.CMSIS_API_KEY }}
