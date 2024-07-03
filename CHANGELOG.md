@@ -2,6 +2,19 @@
 Copyright (C) 2020-2024 Arm Limited or its affiliates and Contributors. All rights reserved.
 SPDX-License-Identifier: Apache-2.0
 -->
+"0.2.0" (2024-07-03)
+====================
+
+Features
+--------
+
+- :sparkles: Use new version of publisher CLI tool (#20240701155808)
+
+
+<!--
+Copyright (C) 2020-2024 Arm Limited or its affiliates and Contributors. All rights reserved.
+SPDX-License-Identifier: Apache-2.0
+-->
 "0.1.3" (2024-03-19)
 ====================
 
