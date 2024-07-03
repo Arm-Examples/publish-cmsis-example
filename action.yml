@@ -20,7 +20,7 @@ inputs:
     description: "API token for publishing projects (required)"
     required: true
   CMSIS_API_KEY:
-    description: "API token for the services (required)"
+    description: "API token for using CMSIS services (required)"
     required: true
 runs:
   using: "composite"
