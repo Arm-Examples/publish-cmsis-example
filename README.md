@@ -8,10 +8,11 @@ In the steps in your workflow file:
 ```yaml
 - uses: Arm-Examples/publish-cmsis-example@latest
   with:
-    branch:       # Branch to get the project from if not `main`
-    project-file: # Path to the project to publish (file with `.csolution.yml` extension) (required)
-    dry-run:      # Whether to just complete a dry-run (`true` or `false`). This can be useful to verify a project is publishable without actually making it available on `keil.arm.com`
-    API_TOKEN:    # API token for publishing projects (required)
+    branch:          # Branch to get the project from if not `main`
+    project-file:    # Path to the project to publish (file with `.csolution.yml` extension) (required)
+    dry-run:         # Whether to just complete a dry-run (`true` or `false`). This can be useful to verify a project is publishable without actually making it available on `keil.arm.com`
+    PUBLISH_API_KEY: # API token for publishing projects (required)
+    CMSIS_API_KEY:   # API token for using CMSIS services (required)
 ```
 
 All inputs marked with `(required)` are required.
