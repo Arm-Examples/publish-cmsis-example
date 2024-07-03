@@ -16,10 +16,10 @@ inputs:
     description: "Whether to just complete a dry-run (`true` or `false`). This can be useful to verify a project is publishable without actually making it available on `keil.arm.com`"
     required: false
     default: "false"
-  API_TOKEN:
+  PUBLISH_API_KEY:
     description: "API token for publishing projects (required)"
     required: true
-  SERVICE_API_TOKEN:
+  CMSIS_API_KEY:
     description: "API token for the services (required)"
     required: true
 runs:
@@ -36,11 +36,11 @@ runs:
     - name: Publish project
       if: ${{ inputs.dry-run == 'false' || inputs.dry-run == false }}
       run: |
-        cmsis-git-project-publisher project --keil-project-registration-service-token ${{ inputs.API_TOKEN }} --cmsis-search-url https://solar-search.api.keil.arm.com/ --keil-project-registration-service-url https://software.api.keil.arm.com/ --project-path ${{ github.workspace }}/${{ inputs.project-file }} --git-root ${{ github.workspace }} --keil-project-registration-service-auth-scheme Token --verbose --intermediate-directory /tmp/intdir --dry-run --ecosystem-services-url https://all.api.keil.arm.com --ecosystem-services-api-key ${{ inputs.CMSIS_API_KEY }}
+        cmsis-git-project-publisher project --keil-project-registration-service-token ${{ inputs.PUBLISH_API_KEY }} --cmsis-search-url https://solar-search.api.keil.arm.com/ --keil-project-registration-service-url https://software.api.keil.arm.com/ --project-path ${{ github.workspace }}/${{ inputs.project-file }} --git-root ${{ github.workspace }} --keil-project-registration-service-auth-scheme Token --verbose --intermediate-directory /tmp/intdir --dry-run --ecosystem-services-url https://all.api.keil.arm.com --ecosystem-services-api-key ${{ inputs.CMSIS_API_KEY }}
       shell: bash
     - name: Test project is publishable (dry-run)
       if: ${{ inputs.dry-run != 'false' && inputs.dry-run != false }}
       run: |
-        cmsis-git-project-publisher project --keil-project-registration-service-token ${{ inputs.API_TOKEN }} --cmsis-search-url https://solar-search.api.keil.arm.com/ --keil-project-registration-service-url https://software.api.keil.arm.com/ --project-path ${{ github.workspace }}/${{ inputs.project-file }} --git-root ${{ github.workspace }} --keil-project-registration-service-auth-scheme Token --verbose --intermediate-directory /tmp/intdir --dry-run --ecosystem-services-url https://all.api.keil.arm.com --ecosystem-services-api-key ${{ inputs.CMSIS_API_KEY }} --dry-run
+        cmsis-git-project-publisher project --keil-project-registration-service-token ${{ inputs.PUBLISH_API_KEY }} --cmsis-search-url https://solar-search.api.keil.arm.com/ --keil-project-registration-service-url https://software.api.keil.arm.com/ --project-path ${{ github.workspace }}/${{ inputs.project-file }} --git-root ${{ github.workspace }} --keil-project-registration-service-auth-scheme Token --verbose --intermediate-directory /tmp/intdir --dry-run --ecosystem-services-url https://all.api.keil.arm.com --ecosystem-services-api-key ${{ inputs.CMSIS_API_KEY }} --dry-run
       shell: bash
 
