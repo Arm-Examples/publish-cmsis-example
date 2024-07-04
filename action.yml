@@ -37,10 +37,20 @@ runs:
       if: ${{ inputs.dry-run == 'false' || inputs.dry-run == false }}
       run: |
         cmsis-git-project-publisher project --keil-project-registration-service-token ${{ inputs.PUBLISH_API_KEY }} --cmsis-search-url https://solar-search.api.keil.arm.com/ --keil-project-registration-service-url https://software.api.keil.arm.com/ --project-path ${{ github.workspace }}/${{ inputs.project-file }} --git-root ${{ github.workspace }} --keil-project-registration-service-auth-scheme Token --verbose --intermediate-directory /tmp/intdir --dry-run --ecosystem-services-url https://all.api.keil.arm.com --ecosystem-services-api-key ${{ inputs.CMSIS_API_KEY }}
+        # The status code is not being reported correctly and the action is reportedly exiting with 0 when all reproductions of the run on dev machines correctly exit with a status of 1. Therefore we will explicitly check if the error summary was created and exit 1 if it was
+        if [ -n "$(grep 'Error Summary' $GITHUB_STEP_SUMMARY)" ]; then
+          echo "::error::Publish of the CMSIS project failed"
+          exit 1
+        fi
       shell: bash
     - name: Test project is publishable (dry-run)
       if: ${{ inputs.dry-run != 'false' && inputs.dry-run != false }}
       run: |
         cmsis-git-project-publisher project --keil-project-registration-service-token ${{ inputs.PUBLISH_API_KEY }} --cmsis-search-url https://solar-search.api.keil.arm.com/ --keil-project-registration-service-url https://software.api.keil.arm.com/ --project-path ${{ github.workspace }}/${{ inputs.project-file }} --git-root ${{ github.workspace }} --keil-project-registration-service-auth-scheme Token --verbose --intermediate-directory /tmp/intdir --dry-run --ecosystem-services-url https://all.api.keil.arm.com --ecosystem-services-api-key ${{ inputs.CMSIS_API_KEY }} --dry-run
+        # The status code is not being reported correctly and the action is reportedly exiting with 0 when all reproductions of the run on dev machines correctly exit with a status of 1. Therefore we will explicitly check if the error summary was created and exit 1 if it was
+        if [ -n "$(grep 'Error Summary' $GITHUB_STEP_SUMMARY)" ]; then
+          echo "::error::Test for verifying the publishability of the CMSIS project failed"
+          exit 1
+        fi
       shell: bash
 

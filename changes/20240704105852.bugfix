@@ -1,0 +1,1 @@
+:bug: Make sure that action exits and displays an error message when the verification job fails
