@@ -2,6 +2,25 @@
 Copyright (C) 2020-2024 Arm Limited or its affiliates and Contributors. All rights reserved.
 SPDX-License-Identifier: Apache-2.0
 -->
+"0.2.1" (2024-07-04)
+====================
+
+Bugfixes
+--------
+
+- :bug: Remove duplicated --dry-run flags (#20240704152135)
+
+
+Misc
+----
+
+- #20240703150719
+
+
+<!--
+Copyright (C) 2020-2024 Arm Limited or its affiliates and Contributors. All rights reserved.
+SPDX-License-Identifier: Apache-2.0
+-->
 "0.2.0" (2024-07-03)
 ====================
 
