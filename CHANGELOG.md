@@ -2,6 +2,19 @@
 Copyright (C) 2020-2024 Arm Limited or its affiliates and Contributors. All rights reserved.
 SPDX-License-Identifier: Apache-2.0
 -->
+"0.3.0" (2024-12-20)
+====================
+
+Features
+--------
+
+- ✨ Use new underlying cmsis-git-project-publisher tool (#20241220152221)
+
+
+<!--
+Copyright (C) 2020-2024 Arm Limited or its affiliates and Contributors. All rights reserved.
+SPDX-License-Identifier: Apache-2.0
+-->
 "0.2.1" (2024-07-04)
 ====================
 
