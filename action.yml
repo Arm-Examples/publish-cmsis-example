@@ -36,11 +36,11 @@ runs:
     - name: Publish project
       if: ${{ inputs.dry-run == 'false' || inputs.dry-run == false }}
       run: |
-        cmsis-git-project-publisher project --keil-project-registration-service-token ${{ inputs.PUBLISH_API_KEY }} --cmsis-search-url https://solar-search.api.keil.arm.com/ --keil-project-registration-service-url https://software.api.keil.arm.com/ --project-path ${{ github.workspace }}/${{ inputs.project-file }} --git-root ${{ github.workspace }} --keil-project-registration-service-auth-scheme Token --verbose --intermediate-directory /tmp/intdir --ecosystem-services-url https://all.api.keil.arm.com --ecosystem-services-api-key ${{ inputs.CMSIS_API_KEY }}
+        cmsis-git-project-publisher publish --keil-project-registration-service-token ${{ inputs.PUBLISH_API_KEY }} --keil-project-registration-service-url https://software.api.keil.arm.com/ --project-path ${{ github.workspace }}/${{ inputs.project-file }} --root-directory ${{ github.workspace }} --keil-project-registration-service-auth-scheme Token --intermediate-directory /tmp/intdir --verify-token ${{ inputs.CMSIS_API_KEY }}
       shell: bash
     - name: Test project is publishable (dry-run)
       if: ${{ inputs.dry-run != 'false' && inputs.dry-run != false }}
       run: |
-        cmsis-git-project-publisher project --keil-project-registration-service-token ${{ inputs.PUBLISH_API_KEY }} --cmsis-search-url https://solar-search.api.keil.arm.com/ --keil-project-registration-service-url https://software.api.keil.arm.com/ --project-path ${{ github.workspace }}/${{ inputs.project-file }} --git-root ${{ github.workspace }} --keil-project-registration-service-auth-scheme Token --verbose --intermediate-directory /tmp/intdir --ecosystem-services-url https://all.api.keil.arm.com --ecosystem-services-api-key ${{ inputs.CMSIS_API_KEY }} --dry-run
+        cmsis-git-project-publisher publish --keil-project-registration-service-token ${{ inputs.PUBLISH_API_KEY }} --keil-project-registration-service-url https://software.api.keil.arm.com/ --project-path ${{ github.workspace }}/${{ inputs.project-file }} --root-directory ${{ github.workspace }} --keil-project-registration-service-auth-scheme Token --intermediate-directory /tmp/intdir --verify-token ${{ inputs.CMSIS_API_KEY }} --dry-run
       shell: bash
 
