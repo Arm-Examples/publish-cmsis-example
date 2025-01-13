@@ -1,4 +1,17 @@
 <!--
+Copyright (C) 2020-2025 Arm Limited or its affiliates and Contributors. All rights reserved.
+SPDX-License-Identifier: Apache-2.0
+-->
+"0.3.1" (2025-01-13)
+====================
+
+Bugfixes
+--------
+
+- :bug: Make sure that error is logged to GITHUB_STEP_SUMMARY (#20250113160424)
+
+
+<!--
 Copyright (C) 2020-2024 Arm Limited or its affiliates and Contributors. All rights reserved.
 SPDX-License-Identifier: Apache-2.0
 -->
