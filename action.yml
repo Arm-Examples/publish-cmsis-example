@@ -35,11 +35,11 @@ runs:
     - name: Publish project
       if: ${{ inputs.dry-run == 'false' || inputs.dry-run == false }}
       run: |
-        cmsis-git-project-publisher project -u https://software.api.keil.arm.com/ --project-path ${{ inputs.project-file }} -d "${{ inputs.project-directory }}" --root-directory ${{ github.workspace }}  -s /tmp/intdir -t ${{ inputs.CMSIS_API_KEY }} --log-error 2
+        cmsis-git-project-publisher project -u https://all.api.keil.arm.com/ --project-path ${{ inputs.project-file }} -d "${{ inputs.project-directory }}" --root-directory ${{ github.workspace }}  -s /tmp/intdir -t ${{ inputs.CMSIS_API_KEY }} --log-error 2
       shell: bash
     - name: Test project is publishable (dry-run)
       if: ${{ inputs.dry-run != 'false' && inputs.dry-run != false }}
       run: |
-        cmsis-git-project-publisher project -u https://software.api.keil.arm.com/ --project-path ${{ inputs.project-file }} -d "${{ inputs.project-directory }}" --root-directory ${{ github.workspace }}  -s /tmp/intdir -t ${{ inputs.CMSIS_API_KEY }} --log-error 2 --dry-run
+        cmsis-git-project-publisher project -u https://all.api.keil.arm.com/ --project-path ${{ inputs.project-file }} -d "${{ inputs.project-directory }}" --root-directory ${{ github.workspace }}  -s /tmp/intdir -t ${{ inputs.CMSIS_API_KEY }} --log-error 2 --dry-run
       shell: bash
 
