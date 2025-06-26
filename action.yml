@@ -12,13 +12,12 @@ inputs:
   project-file:
     description: "Path to the project to publish (file with `.csolution.yml` extension) (required) "
     required: true
+  project-directory:
+    description: "Path to the project directory if not git repository root"
   dry-run:
     description: "Whether to just complete a dry-run (`true` or `false`). This can be useful to verify a project is publishable without actually making it available on `keil.arm.com`"
     required: false
     default: "false"
-  PUBLISH_API_KEY:
-    description: "API token for publishing projects (required)"
-    required: true
   CMSIS_API_KEY:
     description: "API token for using CMSIS services (required)"
     required: true
@@ -36,11 +35,11 @@ runs:
     - name: Publish project
       if: ${{ inputs.dry-run == 'false' || inputs.dry-run == false }}
       run: |
-        cmsis-git-project-publisher publish --keil-project-registration-service-token ${{ inputs.PUBLISH_API_KEY }} --keil-project-registration-service-url https://software.api.keil.arm.com/ --project-path ${{ github.workspace }}/${{ inputs.project-file }} --root-directory ${{ github.workspace }} --keil-project-registration-service-auth-scheme Token --intermediate-directory /tmp/intdir --verify-token ${{ inputs.CMSIS_API_KEY }} --log-error 2
+        cmsis-git-project-publisher project -u https://all.api.keil.arm.com/ --project-path ${{ inputs.project-file }} -d "${{ inputs.project-directory }}" --root-directory ${{ github.workspace }}  -s /tmp/intdir -t ${{ inputs.CMSIS_API_KEY }} --log-error 2
       shell: bash
     - name: Test project is publishable (dry-run)
       if: ${{ inputs.dry-run != 'false' && inputs.dry-run != false }}
       run: |
-        cmsis-git-project-publisher publish --keil-project-registration-service-token ${{ inputs.PUBLISH_API_KEY }} --keil-project-registration-service-url https://software.api.keil.arm.com/ --project-path ${{ github.workspace }}/${{ inputs.project-file }} --root-directory ${{ github.workspace }} --keil-project-registration-service-auth-scheme Token --intermediate-directory /tmp/intdir --verify-token ${{ inputs.CMSIS_API_KEY }} --log-error 2 --dry-run
+        cmsis-git-project-publisher project -u https://all.api.keil.arm.com/ --project-path ${{ inputs.project-file }} -d "${{ inputs.project-directory }}" --root-directory ${{ github.workspace }}  -s /tmp/intdir -t ${{ inputs.CMSIS_API_KEY }} --log-error 2 --dry-run
       shell: bash
 

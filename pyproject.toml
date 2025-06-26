@@ -5,7 +5,7 @@
 [ProjectConfig]
 # Only path variables can and must contain 'DIR', 'PATH' or 'ROOT' in their name as
 # these tokens are used to identify path variables from other variable types.
-PROJECT_NAME = "GitHub action to publish CMSIS example to keil.arm.com "
+PROJECT_NAME = "GitHub action to publish CMSIS project to keil.arm.com "
 PACKAGE_NAME = "publish-cmsis-action"
 PROJECT_UUID = "7379c290-a87f-49b6-9d55-85459d769ade"
 PROJECT_ROOT = "."
