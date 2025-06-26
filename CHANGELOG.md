@@ -2,6 +2,19 @@
 Copyright (C) 2020-2025 Arm Limited or its affiliates and Contributors. All rights reserved.
 SPDX-License-Identifier: Apache-2.0
 -->
+"1.0.0" (2025-06-26)
+====================
+
+Major changes
+-------------
+
+- :boom: Use latest publishing tool which only uses Arm Online Services (#20250626084228)
+
+
+<!--
+Copyright (C) 2020-2025 Arm Limited or its affiliates and Contributors. All rights reserved.
+SPDX-License-Identifier: Apache-2.0
+-->
 "0.3.1" (2025-01-13)
 ====================
 
