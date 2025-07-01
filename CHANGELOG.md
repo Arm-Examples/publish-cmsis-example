@@ -2,6 +2,19 @@
 Copyright (C) 2020-2025 Arm Limited or its affiliates and Contributors. All rights reserved.
 SPDX-License-Identifier: Apache-2.0
 -->
+"1.0.1" (2025-07-01)
+====================
+
+Bugfixes
+--------
+
+- :bug: Ensure backward compatibility (#20250701081246)
+
+
+<!--
+Copyright (C) 2020-2025 Arm Limited or its affiliates and Contributors. All rights reserved.
+SPDX-License-Identifier: Apache-2.0
+-->
 "1.0.0" (2025-06-26)
 ====================
 
