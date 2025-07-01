@@ -21,6 +21,8 @@ inputs:
   CMSIS_API_KEY:
     description: "API token for using CMSIS services (required)"
     required: true
+  PUBLISH_API_KEY:
+    description: "(Deprecated) Kept on only for backward compatibility"    
 runs:
   using: "composite"
   steps:
