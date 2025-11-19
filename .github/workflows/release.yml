@@ -39,7 +39,7 @@ jobs:
     if: needs.check-for-changes.outputs.changes
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: ${{ env.python_version }}
       - uses: FranzDiebold/github-env-vars-action@v2
