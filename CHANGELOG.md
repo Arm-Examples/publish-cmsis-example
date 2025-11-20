@@ -2,6 +2,19 @@
 Copyright (C) 2020-2025 Arm Limited or its affiliates and Contributors. All rights reserved.
 SPDX-License-Identifier: Apache-2.0
 -->
+"1.0.2" (2025-11-20)
+====================
+
+Bugfixes
+--------
+
+- :gear: Fix the location of tools' registry (#202511200841)
+
+
+<!--
+Copyright (C) 2020-2025 Arm Limited or its affiliates and Contributors. All rights reserved.
+SPDX-License-Identifier: Apache-2.0
+-->
 "1.0.1" (2025-07-01)
 ====================
 
