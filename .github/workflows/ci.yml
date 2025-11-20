@@ -21,8 +21,8 @@ jobs:
     name: Publish Action Test
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4 # this repository
-      - uses: actions/checkout@v4 # test repository
+      - uses: actions/checkout@v5 # this repository
+      - uses: actions/checkout@v5 # test repository
         with: 
           repository: Arm-Examples/Hello_B-U585I-IOT02A
           path: test
