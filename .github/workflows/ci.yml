@@ -24,7 +24,7 @@ jobs:
       - uses: actions/checkout@v5 # this repository
       - uses: actions/checkout@v5 # test repository
         with: 
-          repository: Arm-Examples/Hello_LPCXpresso55S69
+          repository: Arm-Examples/Hello_B-U585I-IOT02A
           path: test
       - uses: ./
         name: Publish Project Action
