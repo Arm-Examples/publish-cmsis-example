@@ -23,7 +23,7 @@ jobs:
     outputs:
       changes: ${{ steps.check.outputs.changes }}
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - name: Check if changes directory contains files
         id: check
         run: |
@@ -38,7 +38,7 @@ jobs:
       - check-for-changes
     if: needs.check-for-changes.outputs.changes
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - uses: actions/setup-python@v6
         with:
           python-version: ${{ env.python_version }}
